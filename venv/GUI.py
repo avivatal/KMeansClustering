@@ -45,22 +45,22 @@ class GUI:
         # GUI LAYOUT
 
         #import data
-        self.pathLabel.grid(row=0, column=1)
-        self.pathInput.grid(row=0, column=2)
-        self.browse_button.grid(row=0, column=3)
+        self.pathLabel.grid(row=0, column=1, sticky=W)
+        self.pathInput.grid(row=0, column=2, sticky=W)
+        self.browse_button.grid(row=0, column=3, sticky=W)
 
         #num of clusters
-        self.numOfClustersLbl.grid(row=1, column=1)
-        self.numOfClustersVal.grid(row=1, column=2)
+        self.numOfClustersLbl.grid(row=1, column=1, sticky=W)
+        self.numOfClustersVal.grid(row=1, column=2, sticky=W)
 
         # num of runs
-        self.numOfRunsLbl.grid(row=2, column=1)
-        self.numOfRunsVal.grid(row=2, column=2)
+        self.numOfRunsLbl.grid(row=2, column=1, sticky=W)
+        self.numOfRunsVal.grid(row=2, column=2, sticky=W)
 
         #preprocess
         self.preProcessBtn.grid(row=4, column=1, sticky=W)
         #cluster
-        self.clusterBtn.grid(row=4, column=2, sticky=E)
+        self.clusterBtn.grid(row=4, column=2, sticky=W)
 
     def browse(self):
         #open file dialog and get file name
@@ -116,14 +116,14 @@ class GUI:
 
             #display plots
             scatterImg = ImageTk.PhotoImage(Image.open('scatter.png'))
-            horoplethImg = ImageTk.PhotoImage(Image.open('horopleth.png'))
+            self.lblscatter=Label(self.master,image=scatterImg)
+            self.lblscatter.image=scatterImg
+            self.lblscatter.grid(row=5, column=0, columnspan=10)
 
-            self.labelPhoto1=Label(self.master,image=scatterImg)
-            self.labelPhoto1.image=scatterImg
-            self.labelPhoto1.grid(row=5, column=0, columnspan=10, rowspan=1, padx=5, pady=5)
-            self.labelPhoto2 = Label(self.master, image=horoplethImg)
-            self.labelPhoto2.image = horoplethImg
-            self.labelPhoto2.grid(row=5, column=10, columnspan=10, rowspan=1, padx=5, pady=5)
+            horoplethImg = ImageTk.PhotoImage(Image.open('horopleth.png'))
+            self.lblhoropleth = Label(self.master, image=horoplethImg)
+            self.lblhoropleth.image = horoplethImg
+            self.lblhoropleth.grid(row=5, column=10, columnspan=10)
 
             #pop up message
             tkMessageBox.showinfo("K Means Clustering", "Clustering completed successfully!")
