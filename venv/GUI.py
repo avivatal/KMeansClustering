@@ -28,15 +28,15 @@ class GUI:
         self.pathInput = Entry(master, validate="key")
 
         #Num of Clusters
-        self.numOfClustersLbl = Label(master, text="Num of Clusters:")
+        self.numOfClustersLbl = Label(master, text="Num of clusters k:")
         self.numOfClustersVal = Entry(master, validate="key")
 
         #Num of Runs
-        self.numOfRunsLbl = Label(master, text="Num of Runs:")
+        self.numOfRunsLbl = Label(master, text="Num of runs:")
         self.numOfRunsVal = Entry(master, validate="key")
 
         #PreProcess
-        self.preProcessBtn = Button(master, text="Preprocess", command=lambda : self.preProcess())
+        self.preProcessBtn = Button(master, text="Pre-process", command=lambda : self.preProcess())
 
         #Cluster
         self.clusterBtn = Button(master, text="Cluster", command=lambda: self.cluster())
@@ -98,10 +98,10 @@ class GUI:
             numberOfRuns = int(self.numOfRunsVal.get())
 
             #input validations
-            if numberOfClusters < 0 :
+            if numberOfClusters <= 0 :
                 tkMessageBox.showerror("K Means Clustering", "Please choose at least 1 cluster")
                 return
-            if numberOfRuns < 0 :
+            if numberOfRuns <= 0 :
                 tkMessageBox.showerror("K Means Clustering", "Please choose at least 1 run")
                 return
             if numberOfClusters > len(self.df) :

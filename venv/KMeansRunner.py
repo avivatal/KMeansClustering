@@ -64,5 +64,5 @@ class KMeansRunner:
         )
         py.sign_in("talshemt", "zgAzXUHXrBOenhAwSiDz")
         fig = dict(data=data, layout=layout)
-        py.plot(fig, validate=False, filename='d3-horopleth-map', auto_open=False)
+        py.plot(fig, validate=False, filename='horopleth', auto_open=False)
         py.image.save_as(fig, filename='horopleth.png')
